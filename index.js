@@ -4,12 +4,28 @@ const app = express();
 app.get("/", (req, res) => {
   const { idade, sexo, salario_base, anoContratacao, matricula } = req.query;
 
-  // Se nenhum parâmetro foi passado, mostra instruções
+  // Se nenhum parâmetro foi passado, mostra instruções com exemplos práticos
   if (!idade && !sexo && !salario_base && !anoContratacao && !matricula) {
     return res.send(`
-      <h2>Bem-vindo ao sistema de reajuste salarial!</h2>
-      <p>Para calcular o reajuste, informe os dados na URL no seguinte formato:</p>
-      <code>https://seu-projeto.vercel.app/?idade=35&sexo=M&salario_base=2000&anoContratacao=2010&matricula=1234</code>
+      <h2>💼 Bem-vindo ao sistema de reajuste salarial!</h2>
+      <p>Para calcular o reajuste, copie e cole um dos links abaixo diretamente na barra de endereços do navegador:</p>
+      
+      <h3>📊 Exemplos com base na tabela:</h3>
+      <ul>
+        <li>🧑‍💼 Homem de 25 anos (até 10 anos na empresa): reajuste 10%, desconto R$10,00</li>
+        <code>http://localhost:3000/?idade=25&sexo=M&salario_base=2000&anoContratacao=2018&matricula=1234</code>
+
+        <li>👩 Mulher de 30 anos (mais de 10 anos na empresa): reajuste 8%, acréscimo R$16,00</li>
+        <code>http://localhost:3000/?idade=30&sexo=F&salario_base=3000&anoContratacao=2010&matricula=5678</code>
+
+        <li>🧓 Homem de 60 anos (até 10 anos na empresa): reajuste 8%, desconto R$5,00</li>
+        <code>http://localhost:3000/?idade=60&sexo=M&salario_base=2500&anoContratacao=2018&matricula=2468</code>
+
+        <li>👵 Mulher de 75 anos (mais de 10 anos na empresa): reajuste 17%, acréscimo R$12,00</li>
+        <code>http://localhost:3000/?idade=75&sexo=F&salario_base=4000&anoContratacao=2000&matricula=1357</code>
+      </ul>
+
+      <p>👉 Basta copiar e colar o link acima na barra de endereços ou clique em um exemplo para testar!</p>
     `);
   }
 
@@ -21,7 +37,7 @@ app.get("/", (req, res) => {
     !matricula || isNaN(matricula) || matricula <= 0 ||
     !sexo || !["M", "F"].includes(sexo.toUpperCase())
   ) {
-    return res.send("Dados inválidos! Verifique os parâmetros informados.");
+    return res.send("⚠️ Dados inválidos! Verifique se todos os parâmetros estão corretos na URL.");
   }
 
   const idadeInt = parseInt(idade);
@@ -61,3 +77,11 @@ app.get("/", (req, res) => {
 
 // Exporta o app para a Vercel
 module.exports = app;
+
+// Executa o servidor localmente se for chamado diretamente
+if (require.main === module) {
+  const port = 3000;
+  app.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost:${port}`);
+  });
+}
