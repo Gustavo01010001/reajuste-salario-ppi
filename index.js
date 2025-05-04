@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
     return res.send(`
       <h2>Bem-vindo ao sistema de reajuste salarial!</h2>
       <p>Para calcular o reajuste, informe os dados na URL no seguinte formato:</p>
-      <code>http://localhost:3000/?idade=35&sexo=M&salario_base=2000&anoContratacao=2010&matricula=1234</code>
+      <code>https://seu-projeto.vercel.app/?idade=35&sexo=M&salario_base=2000&anoContratacao=2010&matricula=1234</code>
     `);
   }
 
@@ -59,6 +59,5 @@ app.get("/", (req, res) => {
   `);
 });
 
-app.listen(3000, () => {
-  console.log("Servidor rodando em: http://localhost:3000");
-});
+// Exporta o app para a Vercel
+module.exports = app;
