@@ -8,49 +8,72 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background-color: #f8f8f8;
+      background-color: #f0f2f5;
+      color: #333;
     }
     h2, h3 {
-      color: #333;
+      color: #2c3e50;
     }
     table {
       border-collapse: collapse;
       width: 100%;
       margin-top: 15px;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     th, td {
-      border: 1px solid #999;
-      padding: 8px;
+      border: 1px solid #ccc;
+      padding: 10px;
       text-align: center;
     }
     th {
-      background-color: #eee;
+      background-color: #ecf0f1;
     }
-    pre {
-      background: #eaeaea;
+    pre, code {
+      background: #eef;
       padding: 10px;
       border-radius: 5px;
+      display: block;
+      overflow-x: auto;
     }
     ul {
       list-style: disc;
       margin-left: 20px;
     }
+    .exemplos {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e8f5e9;
+      border-left: 5px solid #4caf50;
+      border-radius: 4px;
+    }
+    .exemplos code {
+      background-color: #f0fff0;
+    }
   </style>
 </head>
 <body>
-  <h2>Como calcular seu reajuste salarial</h2>
+  <h2>Bem-vindo ao Sistema de Reajuste Salarial</h2>
 
-  <p>Para calcular o reajuste, acesse a URL no formato abaixo:</p>
-  <pre>http://localhost:3000/?idade=30&sexo=F&salario_base=1700&anoContratacao=2014&matricula=12345</pre>
+  <p>Para calcular seu reajuste salarial, acesse a URL no seguinte formato:</p>
+  <pre>https://seu-projeto.vercel.app/?idade=30&sexo=F&salario_base=1700&anoContratacao=2014&matricula=12345</pre>
 
   <h3>Parâmetros obrigatórios:</h3>
   <ul>
-    <li><strong>idade</strong> → Idade atual (ex: 30)</li>
-    <li><strong>sexo</strong> → "M" para masculino, "F" para feminino</li>
-    <li><strong>salario_base</strong> → Salário base atual (ex: 1700)</li>
-    <li><strong>anoContratacao</strong> → Ano em que você foi contratado (ex: 2014)</li>
-    <li><strong>matricula</strong> → Número da matrícula funcional</li>
+    <li><strong>idade</strong>: Idade atual (ex: <code>30</code>)</li>
+    <li><strong>sexo</strong>: "M" para masculino, "F" para feminino</li>
+    <li><strong>salario_base</strong>: Salário base atual (ex: <code>1700</code>)</li>
+    <li><strong>anoContratacao</strong>: Ano em que foi contratado (ex: <code>2014</code>)</li>
+    <li><strong>matricula</strong>: Número da matrícula funcional</li>
   </ul>
+
+  <div class="exemplos">
+    <h3>Exemplos prontos para testar:</h3>
+    <code>https://seu-projeto.vercel.app/?idade=28&sexo=M&salario_base=2500&anoContratacao=2020&matricula=1001</code><br/>
+    <code>https://seu-projeto.vercel.app/?idade=42&sexo=F&salario_base=3100&anoContratacao=2010&matricula=1002</code><br/>
+    <code>https://seu-projeto.vercel.app/?idade=75&sexo=M&salario_base=4000&anoContratacao=2005&matricula=1003</code><br/>
+    <code>https://seu-projeto.vercel.app/?idade=65&sexo=F&salario_base=2800&anoContratacao=2015&matricula=1004</code>
+  </div>
 
   <h3>Tabela de Reajuste:</h3>
   <table>
@@ -59,20 +82,20 @@
         <th>Faixa Etária</th>
         <th>Sexo</th>
         <th>Reajuste</th>
-        <th>Desconto (até 10 anos)</th>
-        <th>Acréscimo (+ de 10 anos)</th>
+        <th>Desconto<br>(até 10 anos)</th>
+        <th>Acréscimo<br>(+10 anos)</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>18 - 39</td><td>M</td><td>10%</td><td>R$10,00</td><td>R$17,00</td></tr>
-      <tr><td>18 - 39</td><td>F</td><td>8%</td><td>R$11,00</td><td>R$16,00</td></tr>
-      <tr><td>40 - 69</td><td>M</td><td>8%</td><td>R$5,00</td><td>R$15,00</td></tr>
-      <tr><td>40 - 69</td><td>F</td><td>10%</td><td>R$7,00</td><td>R$14,00</td></tr>
-      <tr><td>70 - 99</td><td>M</td><td>15%</td><td>R$15,00</td><td>R$13,00</td></tr>
-      <tr><td>70 - 99</td><td>F</td><td>17%</td><td>R$17,00</td><td>R$12,00</td></tr>
+      <tr><td>18 - 39</td><td>Masculino</td><td>10%</td><td>R$10,00</td><td>R$17,00</td></tr>
+      <tr><td>18 - 39</td><td>Feminino</td><td>8%</td><td>R$11,00</td><td>R$16,00</td></tr>
+      <tr><td>40 - 69</td><td>Masculino</td><td>8%</td><td>R$5,00</td><td>R$15,00</td></tr>
+      <tr><td>40 - 69</td><td>Feminino</td><td>10%</td><td>R$7,00</td><td>R$14,00</td></tr>
+      <tr><td>70 - 99</td><td>Masculino</td><td>15%</td><td>R$15,00</td><td>R$13,00</td></tr>
+      <tr><td>70 - 99</td><td>Feminino</td><td>17%</td><td>R$17,00</td><td>R$12,00</td></tr>
     </tbody>
   </table>
 
-  <p><strong>Nota:</strong> A quantidade de anos na empresa é calculada pela diferença entre o ano atual e o ano de contratação.</p>
+  <p><strong>Nota:</strong> O tempo de empresa é calculado como <code>ano atual - ano de contratação</code>.</p>
 </body>
 </html>
